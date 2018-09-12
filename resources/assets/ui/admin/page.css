@@ -1,0 +1,105 @@
+
+
+  /*分页样式*/
+  .page{
+  	margin-top:20px;
+    width:100%;
+    height:auto;
+    float:left;
+    /*border:1px solid orange;*/
+  }
+
+  .page .pager{
+    width:100%;
+    margin:0 auto;
+    /*border:1px solid red;*/
+    text-align: center;
+  }
+
+
+.page .lastp{
+	float:left;
+	display:block;
+	width:50px;
+	height:21px;
+	text-align: center;
+	margin:0 10px;
+
+
+	font-size:12px;
+	color:#000;
+	line-height:21px;
+
+	border:1px solid #ccc;
+}
+
+.page .nextp{
+	float:left;
+	display:block;
+	width:50px;
+	height:21px;
+	text-align: center;
+
+
+	font-size:12px;
+	color:#000;
+	line-height:21px;
+
+	border:1px solid #ccc;
+}
+
+
+
+.page .pnum{
+	float:left;
+	display:block;
+	width:17px;
+	height:21px;
+	text-align: center;
+	margin:0 10px;
+
+
+	font-size:12px;
+	color:#000;
+	line-height:21px;
+
+	border:1px solid #ccc;
+}
+
+.page .omit{
+	float:left;
+	display:block;
+	width:17px;
+	height:21px;
+	text-align: center;
+	margin:0 10px;
+
+
+	font-size:12px;
+	color:#000;
+	line-height:21px;
+
+	border:1px solid #ccc;
+}
+
+
+.page .active{
+
+
+	float:left;
+	display:block;
+	width:17px;
+	height:21px;
+	text-align: center;
+	margin:0 10px;
+
+
+	font-size:12px; color:red; line-height:21px; font-weight:bold;
+	/*background-color:red;*/
+}
+
+
+.page a:hover{
+	color:#99CC33;
+}
+

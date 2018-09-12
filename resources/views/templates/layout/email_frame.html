@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<title>{block name=title}游戏平台{/block}</title>
+
+<!-- 公用meta -->
+    {block name=metas}
+		<meta http-equiv="content/html" content="text/html" charset="utf-8"/>
+    {/block}
+
+<!-- 公用css样式  assets多文件压缩-->
+
+	    {block name=csscommon}
+            <link rel="stylesheet" type="text/css" href="{$UI_URL}/admin/cleardefault.css">
+            <link rel="stylesheet" type="text/css" href="{$UI_URL}/admin/page.css">
+            <link rel="stylesheet" type="text/css" href="{$UI_URL}/admin/admin.css">
+
+            <!-- 时间插件start -->
+            <link rel="stylesheet" type="text/css" href="{$UI_URL}/admin/datetimepicker/jquery.datetimepicker.css"/>
+            <!--  时间插件end -->
+            <link rel="stylesheet" type="text/css" href="{$UI_URL}/admin/sweetalert/css/sweet-alert.css">
+            <link rel="stylesheet" href="{$UI_URL}/admin/dialog/easydialog.css" />
+	    {/block}
+
+	    {block name=csspage}
+	    {/block}
+    {block name=jsglobal}
+    <script src="{$UI_URL}/admin/sweetalert/js/sweet-alert.min.js"></script>
+   
+    <script type='text/javascript' src='{$UI_URL}/admin/dialog/easydialog.js' ></script>
+
+    <script type="text/javascript">
+    </script>
+        <script type="text/javascript" src="{$UI_URL}/admin/jquery-1.8.3.min.js"></script>
+         <script type='text/javascript' src='{$UI_URL}/admin/jquery.form.js' ></script>
+        
+        <!--  highchart插件start -->
+        <script src="{$UI_URL}/third/highcharts.js"></script>
+        <!--  highchart插件end -->
+        
+        <!--  时间插件start -->
+        <script src="{$UI_URL}/admin/datetimepicker/build/jquery.datetimepicker.full.js"></script>
+        <!--  时间插件end -->
+
+        <!-- 后台js调用start -->
+        <script type="text/javascript" src="{$UI_URL}/admin/usejs.js"></script>
+        <!-- 后台js调用end -->
+
+        <!--  时间插件start -->
+        <script src="{$UI_URL}/admin/My97DatePicker/WdatePicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="{$UI_URL}/admin/datetimepicker/jquery.datetimepicker.css"/>
+        <!--  时间插件end -->
+        
+  
+    {/block}
+    
+    <style>
+       #editDiv input{
+           border:1px solid #CCC;height:24px;
+       }
+       #editDiv p{
+        margin-top:2px;
+       }
+       .editDiv input{
+           border:1px solid #CCC;height:24px;
+       }
+       .editDiv p{
+        margin-top:2px;
+       }
+	</style>
+</head>
+
+<body>
+
+{block name=body}
+	{block name=header}  {/block}
+
+    {block name=container}
+        {block name=leader}{/block}
+        {block name=client}{/block}
+    {/block}
+
+    {block name=footer}  {/block}
+{/block}
+
+</body>
+</html>
+
+
+
+    {block name=jsfooter}{/block}
+
+
+{block name=jsmodule}
+
+{/block}
+
+{block name=jscripts}
+
+{/block}

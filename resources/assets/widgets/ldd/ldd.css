@@ -1,0 +1,24 @@
+.ldd{
+    position: absolute;
+    /*border:1px solid #B1B5BA;*/
+    /*padding: 8px;*/
+    outline: 1px solid #ccc;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    opacity: 0.9;
+}
+
+.ldd .ldd-wrapper{
+    position: relative;
+    padding: 8px;
+}
+.ldd .ldd-result{
+    position: relative;
+}
+.ldd .ldd-result a{
+    display: block;
+    padding: 6px 2px;
+    border-top: 1px solid #eee;
+    cursor: pointer;
+}

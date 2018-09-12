@@ -1,0 +1,18 @@
+{
+  "require": {
+    "slim/slim": "^3.10",
+    "monolog/monolog": "^1.23",
+    "catfan/medoo": "^1.5",
+    "predis/predis": "^1.1",
+    "vlucas/phpdotenv": "^2.5",
+    "guzzlehttp/guzzle": "^6.3",
+    "smarty/smarty": "^3.1",
+    "phpunit/phpunit": "^7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    },
+    "classmap": ["util/", "plugin/"]
+  }
+}

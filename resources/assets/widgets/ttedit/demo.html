@@ -1,0 +1,81 @@
+<head>
+    <link rel="stylesheet" href="http://www.building.me/assets/common/css/bootstrap.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="ttedit.css" type="text/css" media="all" />
+</head>
+<body>  
+    <div align="center">
+        <textarea id="receive-edit-table-values" cols="8" rows="4"></textarea>
+        <table class="ttedit" id="editable-table-paramter" data-receive="receive-edit-table-values">  
+            <thead>  
+                <tr>  
+                    <th nowrap>
+                        <div class="thwarper">
+                            <a href="javascript:;" data-source="1">≡</a>
+                            <a href="javascript:;" data-insert-row="1">+</a>
+                            <a href="javascript:;" data-remove-row="1">-</a>
+                        </div>
+                    </th>
+                    <th><div class="thwarper">物料名称</div></th>
+                    <th><div class="thwarper">数量</div></th>
+                    <th><div class="thwarper">单位</div></th>
+                    <th><div class="thwarper">参考单价</div></th>
+                    <th><div class="thwarper">参考总金额</div></th>
+                    <th><div class="thwarper">说明</div></th>
+                </tr>
+            </thead>
+                <tr>  
+                    <th>1</th>  
+                    <td>
+                        <div class="cellwarper">
+                            <span>
+                                <input type="text" data-label="" style="width:100%;" />
+                                <input type="hidden" data-value=""  />
+                            </span>
+                            <span class="dropdown">▼</span>
+                        </div>
+                    </td>  
+                    <td>
+                        <div class="cellwarper">
+                            <span>
+                                <input type="text" style="width:100%;" />
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cellwarper">
+                            <span>
+                                <input type="text" style="width:100%;" />
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cellwarper">
+                            <span>
+                                <input type="text" style="width:100%;" />
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cellwarper">
+                            <span>
+                                <input type="text" style="width:100%;" />
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cellwarper">
+                            <span>
+                                <input type="text" style="width:100%;" />
+                            </span>
+                        </div>
+                    </td>
+                </tr>  
+        </table>  
+    </div>
+</body>  
+<script src="http://www.vipmro.com/assets/common/js/jquery-1.9.1.js"></script>
+<script src="TTEdit.js"></script>
+<script>
+
+$('table#editable-table-paramter').TTEdit();
+</script>

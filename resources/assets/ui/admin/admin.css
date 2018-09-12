@@ -1,0 +1,149 @@
+/*顶部样式start*/
+		#top{
+			float:left;
+			width:100%;
+			height:50px;
+			line-height:50px;
+			background-color:#353636;
+
+			font-size:16px;
+			color:#fff;
+		}
+
+		#top .left{
+			float:left;
+			margin-left:20px;
+			width:30%;
+			height:100%;
+		}
+		#top .right{
+			float:right;
+			width:30%;
+			height:100%;
+			text-align: right;
+			margin-right:20px;
+		}
+		#top .right a{
+			color:#fff;
+		}
+	/*顶部样式end*/
+
+	/*中间大块样式start*/
+	#middle{
+		width:100%;
+		height:1500px;
+		float:left;
+		background-color:#eeeeff;
+	}
+
+	#middle .left{
+		width:10%;
+		height:100%;
+		float:left;
+		background-color:#353536;
+
+		color:#fff;
+
+	}
+	#middle .left h4{
+		display:block;
+		width:100%;
+		height:40px;
+		float:left;
+
+		cursor:pointer;
+
+		font-size:12px;
+		line-height: 40px;
+		font-weight:bold;
+		color:#fff;
+
+		background-image: url(./images/set.png);
+		background-repeat: no-repeat;
+		background-position: 93% 50%;
+
+		background-color:#3C3C46;
+		 border-top: 1px solid #444;
+
+	}
+/*小图标的切换start*/
+		#middle .left h4 i{
+			float:left;
+			display:block;
+			width:28px;
+			margin-left:15px;
+			height:100%;
+
+			opacity: 1;
+			font-style: normal;
+			vertical-align: middle;
+		}
+
+		#middle .left h4 i::before {
+		    content: "﹀";
+		}
+		#middle .left h4 .ioff{
+	    	transform: rotate(-90deg);
+	    	margin-left:0;
+	    	margin-right:10px;
+	    	width:28px;
+	    	height:24px;
+
+
+		} 
+/*小图标的切换end*/
+	#middle .left ul{
+		display:none;
+		float:left;
+		width:100%;
+	}
+
+	#middle .left ul li{
+		float:left;
+		width:100%;
+		height:38px;
+		line-height:38px;
+		border-bottom: 1px solid #3c3c46;
+	}
+
+	#middle .left ul li a{
+		width:100%;
+		height:100%;
+		float:left;
+
+		font-size:12px;
+		font-weight:normal;
+		color:#fff;
+
+		background-color: #32323a;
+	}
+	#middle .left ul li a i{
+		display:block;
+		float:left;
+
+		width:20px;
+		height:100%;
+
+		margin-left:15%;
+		margin-right:10px;
+
+		background-image: url(./images/menu.png);
+		background-repeat: no-repeat;
+		background-position: 93% 50%;
+	}
+
+	#middle .left ul li a:hover{
+		background-color:#0c89ff;
+	}
+	/*选中的样式*/
+	#middle .left ul li .on{
+		background-color:#0c89ff;
+	}
+
+
+	#main{
+		width:89%;
+		height:100%;
+		float:right;
+	}
+	/*中间大块样式end*/

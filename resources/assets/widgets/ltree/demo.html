@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="lt-ie9"> <![endif]-->
+<!--[if IE 9]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Nestable</title>
+    <link rel='stylesheet' href='LTree.css' type='text/css' media='all' />
+</head>
+<body>
+
+    <h1>LTree</h1>
+        <div class="dd" id="nestable">
+            <ol class="dd-list">
+                <li class="dd-item dd3-item" data-id="13">
+                    <span class="dd-handle dd3-handle">≡</span><span class="dd3-content">Item 13</span>
+                </li>
+                <li class="dd-item dd3-item" data-id="14">
+                    <span class="dd-handle dd3-handle">≡</span>
+                    <span class="dd3-content">Item 14
+                        <span class="" style="float:right;">action</span>
+                    </span>
+                    
+                </li>
+                <li class="dd-item dd3-item" data-id="15">
+                    <span class="dd-handle dd3-handle">≡</span><span class="dd3-content">Item 15</span>
+                    <ol class="dd-list">
+                        <li class="dd-item dd3-item" data-id="16">
+                            <span class="dd-handle dd3-handle">≡</span>
+                            <span class="dd3-content">Item 16</span>
+                        </li>
+                        <li class="dd-item dd3-item" data-id="17">
+                            <span class="dd-handle dd3-handle">≡</span>
+                            <span class="dd3-content">Item 17</span>
+                        </li>
+                        <li class="dd-item dd3-item" data-id="18">
+                            <span class="dd-handle dd3-handle">≡</span>
+                            <span class="dd3-content">Item 18</span>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+
+
+    <input type="text" id="nestable-output" />
+
+<script src="http://www.vipmro.com/assets/common/js/jquery-1.9.1.js"></script>
+<script src="LTree.js"></script>
+<script>
+
+$(function(){
+    // activate Nestable for list 1
+    $('#nestable').LTree().on('change', function(e){
+        var list   = e.length ? e : $(e.target),
+            output = list.data('output');
+        if (window.JSON) {
+            output.val(window.JSON.stringify(list.LTree('serialize')));//, null, 2));
+        }else {
+            output.val('JSON browser support required for this demo.');
+        }
+    }).trigger('change', $('#nestable').data('output', $('#nestable-output')));
+
+    // output initial serialised data
+    //updateOutput($('#nestable').data('output', $('#nestable-output')));
+
+
+
+});
+</script>
+</body>
+</html>

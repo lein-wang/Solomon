@@ -1,0 +1,48 @@
+
+  <!-- 左侧栏目框 -->
+  <div class="left">
+
+{if $is_admin || $is_sys || $is_editor || $is_art || $is_market}
+        <h4><i class='ioff'></i>游戏管理</h4>
+    <ul>
+            {if $is_admin || $is_sys}
+            <li><a href="/admin/game/hotGameIndex" {if $controller eq 'game' and ($action eq 'hotGameIndex' or $action eq 'addHotGame' or $action eq 'saveHotGame')}class="on"{/if}><i></i>热门</a></li>
+            <li><a href="/admin/banner/index" {if $controller eq 'banner' and ($action eq 'index' or $action eq 'addBanner' or $action eq 'saveBanner')}class="on"{/if}><i></i>首页banner</a></li>
+            <!--<li><a href="/admin/cate/entry" {if $controller eq 'cate' and ($action eq 'entry' or $action eq 'add' or $action eq 'save' or $action eq 'sort')}class="on"{/if}><i></i>发型分类</a></li>-->
+            <li><a href="/admin/game/gameType" {if $controller eq 'game' and ($action eq 'gameType' or $action eq 'addGameType' or $action eq 'saveGameType')}class="on"{/if}><i></i>游戏类型</a></li>
+            <li><a href="/admin/game/index" {if $controller eq 'game' and ($action eq 'index' or $action eq 'addGame' or $action eq 'saveGame')}class="on"{/if}><i></i>游戏列表</a></li>
+            {/if}
+
+    </ul>
+ {/if}        
+        {if $is_admin || $is_sys || $is_art || $is_market}
+        <h4><i class='ioff'></i>发现</h4>
+    <ul>
+            {if $is_admin || $is_sys}
+            <li><a href="/admin/tieba/index" {if $controller eq 'tieba' and ($action eq 'index' or $action eq 'addTieba' or $action eq 'saveTieba' )}class="on"{/if}><i></i>圈子</a></li>
+            <li><a href="/admin/tieba/topicTypeIndex" {if $controller eq 'tieba' and ($action eq 'topicTypeIndex' or $action eq 'addTopicType' or $action eq 'saveTopicType' )}class="on"{/if}><i></i>话题分类</a></li>
+            <li><a href="/admin/tieba/topicIndex" {if $controller eq 'tieba' and ($action eq 'topicIndex' or $action eq 'addTopic' or $action eq 'saveTopic' )}class="on"{/if}><i></i>话题</a></li>
+            <li><a href="/admin/tieba/activeIndex" {if $controller eq 'tieba' and ($action eq 'activeIndex' or $action eq 'addActive' or $action eq 'saveActive' )}class="on"{/if}><i></i>动态</a></li>
+            <li><a href="/admin/tieba/hotSearchIndex" {if $controller eq 'tieba' and ($action eq 'hotSearchIndex' or $action eq 'addHotSearch' or $action eq 'saveHotSearch' )}class="on"{/if}><i></i>热门搜索列表</a></li>
+            <li><a href="/admin/tieba/hotTiebaIndex" {if $controller eq 'tieba' and ($action eq 'hotTiebaIndex' or $action eq 'addHotTieba' or $action eq 'saveHotTieba' )}class="on"{/if}><i></i>热门圈子</a></li>
+            <li><a href="/admin/tieba/hotTopicIndex" {if $controller eq 'tieba' and ($action eq 'hotTopicIndex' or $action eq 'addHotTopic' or $action eq 'saveHotTopic' )}class="on"{/if}><i></i>热门话题</a></li>
+            {/if}
+    </ul>
+{/if}
+
+        {if $is_admin || $is_sys || $is_art || $is_market}
+        <h4><i class='ioff'></i>盒子</h4>
+    <ul>
+            {if $is_admin || $is_sys}
+            <!--<li><a href="/admin/tieba/boxSwitch" {if $controller eq 'tieba' and ($action eq 'boxSwitch' )}class="on"{/if}><i></i>盒子开关</a></li>-->
+            <li><a href="/admin/tieba/boxIndex" {if $controller eq 'tieba' and ($action eq 'boxIndex' or $action eq 'addBox' or $action eq 'saveBox' )}class="on"{/if}><i></i>盒子</a></li>
+            <li><a href="/admin/tieba/boxHot" {if $controller eq 'tieba' and ($action eq 'boxHot' or $action eq 'addBoxHot' or $action eq 'saveBoxHot' )}class="on"{/if}><i></i>热门</a></li>
+            <li><a href="/admin/tieba/boxRec" {if $controller eq 'tieba' and ($action eq 'boxRec' or $action eq 'addBoxRec' or $action eq 'saveBoxRec' )}class="on"{/if}><i></i>推荐</a></li>
+            <li><a href="/admin/tieba/boxBoard" {if $controller eq 'tieba' and ($action eq 'boxBoard' or $action eq 'addBoxBoard' or $action eq 'saveBoxBoard' )}class="on"{/if}><i></i>排行榜</a></li>
+            <li><a href="/admin/tieba/boxBanner" {if $controller eq 'tieba' and ($action eq 'boxBanner' or $action eq 'addBoxBanner' or $action eq 'saveBoxBanner' )}class="on"{/if}><i></i>banner</a></li>
+            <li><a href="/admin/tieba/boxFloat" {if $controller eq 'tieba' and ($action eq 'boxFloat' or $action eq 'addBoxFloat' or $action eq 'saveBoxFloat' )}class="on"{/if}><i></i>弹窗</a></li>
+            {/if}
+    </ul>
+{/if}
+
+  </div>

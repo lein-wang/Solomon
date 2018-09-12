@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+{$msg}
+
+
+
+<script type="text/javascript">
+    var shijian=3;
+	function tiaozhuan(){
+		shijian--;
+		if(shijian<0){
+			history.go(-1);
+			return;
+		}
+		
+		setTimeout(tiaozhuan,1000);	
+	}
+
+	tiaozhuan();
+
+</script>
+
+</body>
+</html>

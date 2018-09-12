@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery treetable Tests</title>
+<link href="gridtree.css" rel="stylesheet" type="text/css" />
+<script src="jquery.js"></script>
+<script src="gridtree.js"></script>
+
+<script>
+;(function($){
+    $(document).ready(function(){
+        $("#example-advanced").treetable({expandable:true,initialState:'collapsed', indent:16 });
+
+        // Highlight selected row
+        $("#example-advanced tbody tr").mousedown(function() {
+            $("tr.selected").removeClass("selected");
+            $(this).addClass("selected");
+        });
+
+        // Drag & Drop Example Code
+        $("#example-advanced .file, #example-advanced .folder").draggable({
+            helper: "clone",
+            opacity: .75,
+            refreshPositions: true,
+            revert: "invalid",
+            revertDuration: 300,
+            scroll: true
+        });
+
+        $("#example-advanced .folder").each(function(){
+            $(this).parents("tr").droppable({
+                accept: ".file, .folder",
+                drop: function(e, ui) {
+                    var droppedEl = ui.draggable.parents("tr");
+                    $("#example-advanced").treetable("move", droppedEl.data("ttId"), $(this).data("ttId"));
+                },
+                hoverClass: "accept",
+                over: function(e, ui) {
+                    var droppedEl = ui.draggable.parents("tr");
+                    if(this != droppedEl[0] && !$(this).is(".expanded")) {
+                        $("#example-advanced").treetable("expandNode", $(this).data("ttId"));
+                    }
+                }
+            });
+        });
+    });
+})(jQuery)
+</script>
+</head>
+
+<body>
+
+
+<table id="example-advanced">
+        <caption>
+          <a href="#" onclick="jQuery('#example-advanced').treetable('expandAll'); return false;">Expand all</a>
+          <a href="#" onclick="jQuery('#example-advanced').treetable('collapseAll'); return false;">Collapse all</a>
+        </caption>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Kind</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody>
+      <tr data-tt-id='1'><td><span class='file'>Acknowledgements.rtf</span></td><td>File</td><td>480.95 KB</td></tr>
+      <tr data-tt-id='2'><td>CHUD</td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='2-1' data-tt-parent-id='2'><td>amber</td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='2-1-1' data-tt-parent-id='2-1'><td>AmberTraceFormats.pdf</td><td>File</td><td>124.46 KB</td></tr>
+      <tr data-tt-id='2-2' data-tt-parent-id='2'><td>BigTop</td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='2-2-1' data-tt-parent-id='2-2'><td><span class='file'>BigTopUserGuide.pdf</span></td><td>File</td><td>1314.71 KB</td></tr>
+      <tr data-tt-id='2-3' data-tt-parent-id='2'><td>Saturn</td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='2-3-1' data-tt-parent-id='2-3'><td><span class='file'>SaturnUserGuide.pdf</span></td><td>File</td><td>694.29 KB</td></tr>
+      <tr data-tt-id='2-4' data-tt-parent-id='2'><td><span class='folder'>Shark</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='2-4-1' data-tt-parent-id='2-4'><td><span class='file'>SharkUserGuide.pdf</span></td><td>File</td><td>12902.51 KB</td></tr>
+      <tr data-tt-id='2-5' data-tt-parent-id='2'><td><span class='folder'>simg4</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='2-6' data-tt-parent-id='2'><td><span class='folder'>simg4_plus</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='2-7' data-tt-parent-id='2'><td><span class='folder'>simg5</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3'><td><span class='folder'>DocSets</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1' data-tt-parent-id='3'><td><span class='folder'>com.apple.ADC_Reference_Library.CoreReference.docset</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1-1' data-tt-parent-id='3-1'><td><span class='folder'>Contents</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1-1-1' data-tt-parent-id='3-1-1'><td><span class='file'>Info.plist</span></td><td>File</td><td>1.23 KB</td></tr>
+      <tr data-tt-id='3-1-1-2' data-tt-parent-id='3-1-1'><td><span class='folder'>Resources</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1-1-2-1' data-tt-parent-id='3-1-1-2'><td><span class='file'>docSet.dsidx</span></td><td>File</td><td>41504 KB</td></tr>
+      <tr data-tt-id='3-1-1-2-2' data-tt-parent-id='3-1-1-2'><td><span class='file'>docSet.skidx</span></td><td>File</td><td>43072 KB</td></tr>
+      <tr data-tt-id='3-1-1-2-3' data-tt-parent-id='3-1-1-2'><td><span class='folder'>Documents</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1-1-2-3-1' data-tt-parent-id='3-1-1-2-3'><td><span class='folder'>documentation</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1-1-2-3-1-1' data-tt-parent-id='3-1-1-2-3-1'><td><span class='folder'>Accessibility</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1-1-2-3-1-1-1' data-tt-parent-id='3-1-1-2-3-1-1'><td><span class='folder'>Reference</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1-1-2-3-1-1-1-1' data-tt-parent-id='3-1-1-2-3-1-1-1'><td><span class='folder'>AccessibilityCarbonRef</span></td><td>Folder</td><td>--</td></tr>
+      <tr data-tt-id='3-1-1-2-3-1-1-1-1-1' data-tt-parent-id='3-1-1-2-3-1-1-1-1'><td><span class='folder'>CarbonAXRefRevisions</span></td><td>Folder</td><td>--</td></tr>
+     
+        </tbody>
+      </table>
+
+
+</body>
+</html>

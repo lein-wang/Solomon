@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<style type="text/css">
+		body { font-family:Arial; font-size:12pt; padding:20px; width:820px; margin:20px auto; }
+		h1 { font-size:16pt; }
+		h2 { font-size:13pt; }
+		ul { margin:0px; padding:0px; margin-left:20px; }
+		#list1, #list2 { width:350px; list-style-type:none; margin:0px; }
+		#list1 li, #list2 li { float:left; padding:5px; width:100px; height:100px;}
+		#list1 li a img{float:right;margin-top:-20px;margin-right:9px;border:0;}
+		#list1 div, #list2 div { width:90px; height:50px; border:solid 1px black; background-color:#E0E0E0; text-align:center; padding-top:40px; }
+		#list2 { float:right; }
+		.placeHolder div { background-color:white !important; border:dashed 1px gray !important; }
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.dragsort-0.5.1.min.js"></script>
+	
+	
+	<script type="text/javascript">
+		$("ul:first").dragsort();
+	</script>
+	
+	
+	<ul id="list1">
+		<li><div>1</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>2</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>3</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>4</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>5</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>6</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>7</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>8</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>9</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+		<li><div>10</div><a href="javascript:;"><img src="del.jpg" /></a></li>
+	</ul>
+	<input type="button" id="addli" />
+	<!-- save sort order here which can be retrieved on server on postback -->
+	<input name="list1SortOrder" type="text" />
+
+	<script type="text/javascript">
+		$("#list1").dragsort({ dragSelector: "div", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
+		
+		function saveOrder() {
+			var data = $("#list1 li").map(function() { return $(this).children().html(); }).get();
+			$("input[name=list1SortOrder]").val(data.join("|"));
+		};
+
+			$("#addli").click(function(){
+				var $newLi = $('<li><div>11</div><a href="javascript:;"><img src="del.jpg" /></a></li>'); 
+				$newLi.find("a").click(deltr).end()
+				$("#list1").append($newLi);
+				
+			})
+			function deltr(){
+				$(this).parents("li").remove();
+		   	};
+			$("#list1 a").click(function(){
+				$(this).parent("li").remove();
+			})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+*{
+	margin:0;
+	padding:0;
+}
+ul,li,p,h1,h2,h3,h4,h5,h6{
+	margin:0;
+	padding:0;
+}
+
+ul,li{
+	list-style: none;
+}
+
+img{
+	border:0;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	color:#008DE0;
+}
+body{
+	font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","黑体",Arial,sans-serif !important;
+}

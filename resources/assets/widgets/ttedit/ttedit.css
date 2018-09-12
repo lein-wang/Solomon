@@ -1,0 +1,43 @@
+.ttedit{
+    background-color: #B1B5BA;
+    border-collapse: separate;
+    border-spacing: 1px;
+}
+.ttedit tr{
+    background-color: #fff;
+}
+.ttedit th{
+    background-color: #DFE3E8;
+}
+.ttedit input[type="text"], .ttedit input[type="text"]:focus{
+    clear:both;
+    border:0;
+    margin: 4px 0;
+    padding: 0;
+    /*padding-top: 8px;*/
+    box-shadow: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    min-width: 1.2cm;
+}
+.thwarper{
+    padding: 4px;
+    font-size: 13px;
+}
+.cellwarper{
+    position: relative;
+    /*letter-spacing:-4px;*/
+    /*border: 1px solid #f00;*/
+    min-height: 20px;
+    padding-right: 20px;
+}
+.cellwarper .dropdown{
+    position: absolute;
+    top: 30%;
+    right: 0;
+    /*padding: 5px;*/
+    cursor: pointer;
+    color: #aaa;
+    font-size: 12px;
+}
