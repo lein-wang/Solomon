@@ -5,8 +5,10 @@
 支持单表一级缓存
 使用Smarty模板
 ## nginx配置
+```Bash
 server {
-    listen          8081;
+
+    listen          8081;   
     server_name  192.168.115.197:8081;
     root   "xxx/public";
     index           index.php index.html index.htm;
@@ -38,6 +40,7 @@ server {
     	root xxx/resources;
 	}
 }
+```
 ## 目录结构
 public : 根目录
 app ：接口和后台的controller + model
