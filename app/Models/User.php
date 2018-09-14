@@ -177,7 +177,7 @@ class User extends BaseModel
     /**
      * 获得用户资料,根据自己的情况读取数据库
      */
-    protected function getUserInfo($uid = 1)
+    public function getUserInfo($uid = 1)
     {
         static $userinfo = array();
         if (!isset($userinfo[$uid])) {

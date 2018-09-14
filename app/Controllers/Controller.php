@@ -125,4 +125,17 @@ class Controller
 
     }
 
+    /**
+     * 
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if($this->container->get($name)){
+            return $this->container->get($name);
+        }
+
+    }
+
 }

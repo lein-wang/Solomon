@@ -10,6 +10,7 @@ namespace App\Models;
 
 
 use Interop\Container\ContainerInterface;
+use resovler;
 
 class BaseModel
 {
@@ -31,6 +32,19 @@ class BaseModel
         $this->dao = $this->container->get('dao');
     }
 
+    /**
+     *
+     * @param $name
+     * @return mixed
+     */
+//    public function __get($name)
+//    {
+//        if ($this->container->get($name)) {
+//            return $this->container->get($name);
+//        }
+//
+//    }
+
 //    public function __call($name, $arguments)
 //    {
 //        return call_user_func_array(array($this,$name),$arguments);
@@ -46,42 +60,39 @@ class BaseModel
      * @param $arguments
      * @return mixed
      */
-    public static function __callStatic($name, $arguments)
-    {
-        return call_user_func_array(array(new static(),$name),$arguments);
-    }
+//    public static function __callStatic($name, $arguments)
+//    {
+//        return call_user_func_array(array(new static(), $name), $arguments);
+//    }
 
     /**
      * 全局数据库日志
      */
     public function __destruct()
     {
-        $this->logger->addInfo($this->dao->getDb()->last());
-    }
-
-
-    public static function instance($container)
-    {
-    dump(count(static::$_instance));
-
-        $classFullName = get_called_class();
-        if (!isset(static::$_instance[$classFullName]))
-        {
-//            core_load_class($classFullName);
-            if (!class_exists($classFullName, false))
-            {
-                throw new \Exception('"' . $classFullName . '" was not found !');
-            }
-
-            // $_instance[$classFullName] = new $classFullName();
-            // 1、先前这样写的话，PhpStrom 代码提示功能失效；
-            // 2、并且中间变量不能是 数组，如 不能用 return $_instance[$classFullName] 形式返回实例对象，否则 PhpStrom 代码提示功能失效；
-            $instance = static::$_instance[$classFullName] = new static($container);
-            dump(count(static::$_instance));
-            return $instance;
+        if (!empty($this->dao->getDb()->last())) {
+            $this->logger->addInfo($this->dao->getDb()->last());
         }
-
-        return static::$_instance[$classFullName];
     }
+
+
+//    public static function instance($container)
+//    {
+//        $classFullName = get_called_class();
+//        if (!isset(static::$_instance[$classFullName])) {
+////            core_load_class($classFullName);
+//            if (!class_exists($classFullName, false)) {
+//                throw new \Exception('"' . $classFullName . '" was not found !');
+//            }
+//
+//            // $_instance[$classFullName] = new $classFullName();
+//            // 1、先前这样写的话，PhpStrom 代码提示功能失效；
+//            // 2、并且中间变量不能是 数组，如 不能用 return $_instance[$classFullName] 形式返回实例对象，否则 PhpStrom 代码提示功能失效；
+//            $instance = static::$_instance[$classFullName] = new static($container);
+//            return $instance;
+//        }
+//
+//        return static::$_instance[$classFullName];
+//    }
 
 }

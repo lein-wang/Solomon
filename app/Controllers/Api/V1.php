@@ -15,9 +15,8 @@ class V1 extends BaseApi
     public function index(){
         // dump(debug_backtrace());
         echo 'end :'.microtime() .'<br>';
-        die;
         $this->logger->addInfo('Something interesting happened');
-        $users = $this->dao->select('user','*');
+        $users = $this->dao->getDb()->select('user','*');
         var_dump($users);
         die;
         $this->redis->set('users',json_encode($users));
@@ -26,5 +25,7 @@ class V1 extends BaseApi
         print_r($this->request->getUploadedFiles());
         die;
     }
+
+
 
 }

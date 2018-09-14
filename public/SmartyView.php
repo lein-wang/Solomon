@@ -106,6 +106,7 @@ class SmartyView implements \ArrayAccess, \Countable, \IteratorAggregate
      * @param $template
      * @param array $data
      * @return string
+     * @throws \SmartyException
      */
     public function fetch($template, $data = array())
     {
@@ -118,6 +119,8 @@ class SmartyView implements \ArrayAccess, \Countable, \IteratorAggregate
      * 将\Smarty编译解析后的内容直接输出显示
      * @param $template
      * @param array $data
+     * @return void
+     * @throws \SmartyException
      */
     public function display($template, $data = array())
     {

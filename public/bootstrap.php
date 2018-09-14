@@ -1,18 +1,8 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: new
- * Date: 2018-09-03
- * Time: 13:48
- */
-
 
 //  Register the auto loader
 require '../vendor/autoload.php';
-//require('../vendor/smarty/smarty/libs/Smarty.class.php');
 require './helper.php';
-require './Db.php';
-// require './config.php';
 require './SmartyView.php';
 require './dao.php';
 
@@ -21,7 +11,11 @@ use Predis\Client;
 use App\Util\Session;
 
 
-//  Load `.env` configuration file and keys but not $_SERVER
+/*
+ * --------------------------------
+ * Load `.env` configuration file and keys but not $_SERVER
+ * --------------------------------
+ */
 $previousKeys = array_keys($_ENV);
 $env = new Dotenv\Dotenv(ROOT_PATH);
 $env->load();
@@ -30,25 +24,32 @@ $newKeys = array_diff($currentKeys, $previousKeys);
 array_map(function ($key) {
     unset($_SERVER[$key]);
 }, $newKeys);
-//  Set timezone
+
+/*
+ * --------------------------------
+ * Set timezone
+ * --------------------------------
+ */
 @ date_default_timezone_set(env('TIMEZONE', 'PRC'));
-//  Create app
+
+/*
+ * --------------------------------
+ * Create app
+ * --------------------------------
+ */
 $app = new \Slim\App(
     [
         'settings' => [
             'displayErrorDetails' => env('APP_DEBUG', true),
-
-
-            'logger' => [
-                'name' => 'slim-app',
-                'level' => Monolog\Logger::DEBUG,
-                'path' => ROOT_PATH . '/app.log',
-            ],
-
         ]
     ]
 );
 
+/*
+ * --------------------------------
+ * 容器注入
+ * --------------------------------
+ */
 $container = $app->getContainer();
 $container['logger'] = function ($c) {
     $logger = new \Monolog\Logger('my_logger');
@@ -57,7 +58,7 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
-$container['master'] = function ($container) {
+$container['master'] = function () {
     $db = new \Medoo\Medoo(
         [
             'database_type' => env('MASTER_DB_TYPE', 'mysql'),
@@ -68,12 +69,11 @@ $container['master'] = function ($container) {
             'charset' => env('MASTER_DB_CHARSET', 'utf8'),
             'port' => env('MASTER_DB_PORT', 3306),
             'prefix' => env('MASTER_DB_PREFIX', ''),
-//            'container' => $container
         ]
     );
     return $db;
 };
-$container['slave'] = function ($container) {
+$container['slave'] = function () {
     $db = new \Medoo\Medoo(
         [
             'database_type' => env('SLAVE_DB_TYPE', 'mysql'),
@@ -84,7 +84,6 @@ $container['slave'] = function ($container) {
             'charset' => env('SLAVE_DB_CHARSET', 'utf8'),
             'port' => env('SLAVE_DB_PORT', 3306),
             'prefix' => env('SLAVE_DB_PREFIX', ''),
-//            'container' => $container
         ]
     );
     return $db;
@@ -95,7 +94,7 @@ $container['dao'] = function ($container) {
     return $db;
 };
 
-$container['redis'] = function ($c) {
+$container['redis'] = function () {
     $db = new Client([
         'scheme' => env('REDIS_SCHEME', 'tcp'),
         'host' => env('REDIS_HOST', '127.0.0.1'),
@@ -151,3 +150,4 @@ $container['view'] = function ($c) {
     $view->addExtionsions($c, $smarty_config['pluginsDir']);
     return $view;
 };
+

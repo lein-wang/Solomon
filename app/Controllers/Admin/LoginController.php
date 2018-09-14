@@ -11,11 +11,16 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
 use App\Models\User;
-use App\Models\Autoload;
-use App\Models\Cache;
 
 class LoginController extends Controller
 {
+    /**
+     * @param $request
+     * @param $response
+     * @param $args
+     * @return mixed
+     * @throws \Exception
+     */
     function index($request, $response, $args)
     {
         if ($this->request->isPost()) {
@@ -27,17 +32,12 @@ class LoginController extends Controller
             if (empty($password)) {
                 $this->view->assign('message', '密码不能为空！');
             }
-//            dump($account);
-//            $users = $this->db->select('user','*');
-            $user = $this->dao->findOne('user',['name' => $account]);
-//            dump($user);
-//             dump(md5($password) == $user['passwd']);
-//             die;
+            $user = $this->dao->findOne('user', ['name' => $account]);
             if ($user) {
                 if (md5($password) == $user['passwd']) {
                     $user['userid'] = $user['id'];
-//                    $ur = $this->db->select('user_role', array("uid" => $user['id']));
                     $ur = (new User($this->container))->getUserRoles($user['id']);
+
                     $is_sys = $is_editor = $is_market = $is_art = 0;
                     if (!empty($ur)) {
                         foreach ($ur as $r) {
@@ -57,7 +57,6 @@ class LoginController extends Controller
                     $user["is_market"] = $is_market;
                     $user["is_art"] = $is_art;
                     $this->saveDataSession($user);
-                    // $this->output(array("info"=>"登陆成功！","status"=>"y"));
                     if ($is_market) {
                         $url = '/admin/index';
                     } elseif ($is_art) {
@@ -71,36 +70,25 @@ class LoginController extends Controller
                     $this->view->assign('message', '密码不正确！');
                 }
             } else {
-                // $this->output(array("info"=>"用户名不存在","status"=>"n"));
                 $this->view->assign('message', '用户名不存在');
             }
         }
 
-        return $this->view->display('login.html', [
-//            'name' => 'gjgjgjgjgjg',
-//            'is_admin'=>1,
-//            'is_sys'=>1,
-//            'is_editor'=>1,
-//            'is_art'=>1,
-//            'is_market'=>1,
-//            'is_market'=>1,
-//            'controller'=>1,
-//            'action'=>1,
-        ]);
+        return $this->view->display('login.html', []);
     }
 
-    public function error_page($request, $response, $args){
+    public function error_page($request, $response, $args)
+    {
         $msg = $args['msg'];
         return $this->view->display('error.html', [
             'msg' => $msg,
         ]);
     }
 
-    public function logout($request, $response, $args){
+    public function logout($request, $response, $args)
+    {
         $this->session->clean();
-        // $this->assign('refurl', $this->get('refurl','/'));
-        // $this->assign('error', '已安全退出!');
-        $url='/admin/login';
+        $url = '/admin/login';
         $this->location($url);
     }
 
